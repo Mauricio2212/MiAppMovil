@@ -1,0 +1,7 @@
+{
+  "name": "vetfarrera-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
