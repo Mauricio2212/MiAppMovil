@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vetfarrera-30489"
+  },
+  "targets": {
+    "vetfarrera-30489": {
+      "hosting": {
+        "app": [
+          "vetfarrera-30489"
+        ]
+      }
+    }
+  }
+}
