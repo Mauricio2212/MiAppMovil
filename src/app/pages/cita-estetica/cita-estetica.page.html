@@ -1,0 +1,190 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row >
+      <ion-col  id="col-encabezado" color="#6bad4a">
+        <ion-list id="list-encabezado" color="##6bad4a">
+          <ion-item id="item-encabezado" color="#6bad4a">
+            <a id="flecha-regreso" href="sucursales"><ion-icon id="flecha-regreso" name="arrow-back-outline"></ion-icon></a>
+            <ion-title>Agenda tu Cita</ion-title>
+            <ion-icon id="icono-ayuda" name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+
+    <ion-row>
+      <ion-col>
+        <h1>Estetica</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h2>Ingresa los datos</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input name="mascota" type="text" [(ngModel)]="newEstetica.mascota" placeholder="Nombre de la Mascota"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h2>Especie</h2>
+        <ion-list>
+          <ion-item>
+            <ion-label>Perro</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="newEstetica.perro" (click)="especie()"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Gato</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="newEstetica.gato" (click)="cerrarespecie()"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="enableInfoTamano">
+      <h2>Tamaño</h2>
+      <ion-item>
+        <ion-label>Chico</ion-label>
+        <ion-label><img src="../../../assets/images/ch.png" width="45px" height="45px"></ion-label>
+        <ion-checkbox [(ngModel)]="newEstetica.ch" (click)="ch()"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mediano</ion-label>
+        <ion-label><img src="../../../assets/images/mm.png" width="60px" height="60px"></ion-label>
+        <ion-checkbox [(ngModel)]="newEstetica.m" (click)="mm()"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>GD</ion-label>
+        <ion-label><img src="../../../assets/images/gd.PNG" width="90px" height="70px"></ion-label>
+        <ion-checkbox [(ngModel)]="newEstetica.gd" (click)="gd()"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <ion-list>
+      <ion-item>
+          <ion-label>En Sucursal</ion-label>
+          <ion-checkbox   [(ngModel)]="newEstetica.enSucursal" (click)="cerrardomicilio()"></ion-checkbox>
+      
+          <ion-label style="padding-left: 5px;">A domicilio</ion-label>
+          <ion-checkbox  [(ngModel)]="newEstetica.aDomicilio" (click)="domicilio()"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="enableDomicilio">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="calle" type="text" [(ngModel)]="newEstetica.calle" placeholder="Calle"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="numero" type="number" [(ngModel)]="newEstetica.numero" placeholder="Numero"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="colonia" type="text" [(ngModel)]="newEstetica.colonia" placeholder="Colonia"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-item button="true" detail="true" (click)="nuevo()">
+      <ion-label>Elegir Horario</ion-label>
+    </ion-item>
+
+    <div *ngIf="enableCalendario">
+      <ion-input>
+        <ion-datetime 
+          [isDateEnabled]="isWeekday"
+          minuteValues="0,15,30,45"
+          min="2022-01-01T10:00:00"
+          max="2022-12-31T17:50:00"
+          (ionChange)="cambioFecha($event)"
+          [showDefaultButtons]="true">
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+  
+      </ion-input>
+
+      <ion-item>
+        <ion-button slot="end" color="danger" (click)="enableCalendario= false">
+          Cerrar
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+
+    <div *ngIf="enablePrecio">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label><strong>Costo aprox: $250</strong></ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="enablePrecioM">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label><strong>Costo aprox: $300 - $400</strong></ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="enablePrecioGD">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label><strong>Costo aprox: $450 - $500</strong></ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons slot="end">
+            <ion-button (click)="saveCitaEstetica()" color="success">
+              Guardar
+            </ion-button>
+            <ion-button  color="danger"
+            (click)="cancelar()"
+            (click)="enableCalendario= false"
+            (click)="enableInfoTamano = false"
+            (click)="enableDomicilio = false">
+              Cancelar
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

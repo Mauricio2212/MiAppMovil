@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item button="true" detail="true" href="usuarios">
+            <ion-label >Usuarios</ion-label>
+            <ion-icon slot="start" name="people-circle-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item button="true" detail="true" href="registrar-mascota">
+            <ion-label >Mascotas</ion-label>
+            <ion-icon slot="start" name="paw"></ion-icon>
+          </ion-item>
+
+          <ion-item button="true" detail="true" href="promotions">
+            <ion-label >Promociones</ion-label>
+            <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item button="true" detail="true" href="registro-sucursales">
+            <ion-label >Sucursales</ion-label>
+            <ion-icon name="storefront" slot="start" color="black"></ion-icon>
+          </ion-item>
+
+          <ion-item button="true" detail="true" href="registrar-servicios">
+            <ion-label >Servicios</ion-label>
+            <ion-icon name="fitness-outline" slot="start" color="black"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onLogout()">
+          <ion-icon name="exit-outline"></ion-icon>
+          Cerrar Sesión
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

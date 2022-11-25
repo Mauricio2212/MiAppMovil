@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row id="row-encabezado" color="#01366aff">
+      <ion-col  id="col-encabezado" color="#01366aff">
+        <ion-list id="list-encabezado" color="#01366aff">
+          <ion-item id="item-encabezado" color="#01366aff">
+            <a id="flecha-regreso" href="main/tabs/tab1"><ion-icon name="arrow-back-outline"></ion-icon></a>
+            <ion-title>Perfil</ion-title>
+            <ion-icon id="icono-ayuda" name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5">
+        <ion-item>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+       <ion-item>
+        <ion-label>
+          Nombre:
+        </ion-label>
+        <ion-input [(ngModel)]="displayName"></ion-input>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+          <ion-label>
+            Correo:
+          </ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+      </ion-col>
+    </ion-row>
+
+   <ion-row class="ion-justify-content-end">
+    <ion-col size="4">
+      <ion-button id="btn-editar"  fill="outline" color="#d66603e8">
+        Editar
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="5">
+      <ion-button id="btn-editar"  fill="outline" color="#d66603e8">
+        Guardar
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-col>
+   </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item button=true detail=true>
+          <ion-label>Mascotas</ion-label>
+          <ion-icon slot="start" name="paw"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="onLogout()">
+        <ion-icon name="exit-outline"></ion-icon>
+        Cerrar Sesión
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+</ion-content>

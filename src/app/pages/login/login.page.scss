@@ -1,0 +1,79 @@
+//Titulo
+#titulo{
+    margin-top: 60px;
+}
+h1{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d66603e8;
+}
+//inputs
+#email, #password{
+    height: 50px;
+}
+#email{
+    margin-top: 50px;
+}
+#password{
+    margin-top: 20px;
+}
+ion-input{
+    height: 50px;
+    background-color: #dfe3e8;
+    font-weight: bold;
+}
+
+//Boton
+ion-button{
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    height: 50px;
+}
+#Iniciar-sesion{
+    background-color: #d66603e8;
+}
+//Enlace
+#Enlace{
+    padding: 2px;
+    height: 50px;
+}
+p, a{
+    font-size: 18px;
+    color: #01366aff;
+}
+a{
+    margin-left: 5px;
+    font-weight: bold;
+}
+//Linea
+hr{
+    border-top: 4px solid #01366aff;
+    height: 2px;
+    max-width: 309px;
+    padding: 0;
+    margin: 3px auto 0 auto;
+    border-radius: 5%;
+  }
+
+//Botoners google y facebook
+
+#boton-google, #boton-facebook{
+    background-color: #ffff;
+    color: #d66603e8;
+    font-weight: bold;
+    margin: 5px;
+}
+//Iconos
+img{
+    margin-left: 5px;
+}
+#icono-google{
+    margin-left: 25px;
+}
+#icono-facebook{
+    margin-left: 7px;
+}
+
+

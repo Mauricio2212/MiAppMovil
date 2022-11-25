@@ -1,0 +1,74 @@
+<ion-content>
+  <form>
+    <ion-grid fixed>
+      <ion-row id="titulo" class="ion-justify-content-center">
+        <ion-col size="10">
+          <h1>¡Inicia Sesión
+            <br>para poder continuar!
+          </h1>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row id="email" class="ion-justify-content-center">
+        <ion-col size="9">
+          <ion-input name="email" type="email" #email required placeholder="Correo"></ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row id="password" class="ion-justify-content-center">
+        <ion-col size="9">
+          <ion-input name="password" type="password" #password required placeholder="Contraseña"></ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="9">
+          <ion-button id="Iniciar-sesion"  color="#d66603e8"
+          type="submit" (click)="onLogin(email, password)"
+          expand="block">
+            Iniciar Sesión
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col id="Enlace" size="10">
+          <p>Si no te has registrado<a routerLink="/sing-up">Registrate aquí</a></p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col id="Enlace" size="9">
+          <a routerLink="/forgot-password">¿Se te olvidó tu contraseña?</a>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <hr>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="11">
+          <ion-list id="contenedor-botones">
+            <ion-item id="items">
+              <ion-button id="boton-google" color="#ffff "
+              type="submit" (click)="onLoginGoogle()"
+              expand="block">Iniciar Sesión con Google  
+                <img id="icono-google" src="../../../assets/images/GoogleLogo2.png" width="30" height="30"></ion-button>
+            </ion-item>
+            
+            <ion-item>
+              <ion-button id="boton-facebook" color="#ffff"
+              type="submit" (click)="onLoginFacebook()"
+              expand="block">Iniciar Sesión con Facebook
+                <img id="icono-facebook" src="../../../assets/images/LogoFaceBook2.png" width="30" height="30">
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

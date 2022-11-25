@@ -1,0 +1,58 @@
+//Titulo
+#titulo{
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #01366aff;
+}
+//Linea
+hr{
+    border-top: 4px solid #6bad4a;
+    height: 2px;
+    max-width: 383px;
+    padding: 0;
+    margin: 3px auto 0 auto;
+    margin-top: 20px;
+    border-radius: 5%;
+  }
+//Subtitulo
+#subtitulo{
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d66603e8;
+}
+//Boton
+ion-button{
+    width: 100%;
+    height: 100%;
+}
+#col-botones{
+    height: 70px;
+}
+#servicios{
+    background-color: #d66603e8;
+}
+#sucursales{
+    background-color: #01366aff;
+}
+//Registro de Mascota
+#contenedor-registro-mascota{
+    margin-top: 40px;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+h4{
+    margin-left: 5px;
+    color: #6bad4a;
+    font-weight: bold;
+}
+p{
+    text-align: center;
+}
+#registrar-mascota{
+    background-color: #01366aff;
+}
+

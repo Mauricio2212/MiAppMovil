@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <a href="tabs/tab/tab1"><ion-icon name="arrow-back-outline"></ion-icon></a>
+            <ion-title>
+              Inicio
+            </ion-title>
+            <ion-icon name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <h2 id="titulo">Te ofrecemos</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col id="col-botones">
+        <ion-button id="servicios" color="#d66603e8" href="main/tabs/servicios">
+          Servicios
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <hr>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h2 id="subtitulo">Descubre</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col id="col-botones">
+        <ion-button id="sucursales" color="#01366aff" href="main/tabs/sucursales">
+          Sucursales
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row id="contenedor-registro-mascota">
+      <ion-col>
+        <ion-list>
+          <ion-item>
+          
+            <h4>Registra a tu Mascota</h4>
+          </ion-item>
+
+          <ion-item>
+            <p>Nos ayudará brindarle un servicio personalizado
+              a nuestros clientes</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="8">
+        <ion-button id="registrar-mascota" color="#01366aff" href="mascotas"> 
+          Registrar Mascota
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

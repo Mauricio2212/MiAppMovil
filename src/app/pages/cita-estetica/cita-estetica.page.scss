@@ -1,0 +1,12 @@
+//Encabezado
+#row-encabezado, #col-encabezado, #list-encabezado, #item-encabezado{
+    background-color: #6bad4a;
+}
+#flecha-regreso, #icono-ayuda, ion-title{
+    color: white;
+}
+//check-box
+ion-checkbox::part(container) {
+    border-radius: 90px;
+  }
+  

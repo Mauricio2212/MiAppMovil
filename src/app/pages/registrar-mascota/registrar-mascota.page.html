@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-row id="row-encabezado" color="#01366aff">
+      <ion-col  id="col-encabezado" color="#01366aff">
+        <ion-list id="list-encabezado" color="#01366aff">
+          <ion-item id="item-encabezado" color="#01366aff">
+            <a href="home"><ion-icon name="arrow-back-outline"></ion-icon></a>
+            <ion-title>Registrar-mascota</ion-title>
+            <ion-icon name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-grid fixed>
+      <ion-row class="ion-nowrap">
+        <ion-col >
+          <ion-item button=true detail=true (click)="nuevo()">
+            <ion-label>Agregar Mascota</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <hr>
+        </ion-col>
+      </ion-row>
+
+      <div *ngIf="enableNewPet">
+        <ion-row>
+          <ion-col>
+            <h2>Ingresa los datos de tu Mascota</h2>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row id="namePet" class="ion-justify-content-center">
+          <ion-col size="12">
+            <ion-item>
+              <ion-input name="namePet" type="text" [(ngModel)]="newPet.namePet" #namePet placeholder="Nombre de Mascota"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col>
+            <h2 id="subtitulo">Especie</h2>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row id="especie" class="ion-justify-content-center">
+          <ion-col size="12">
+            <ion-item>
+              <ion-input name="especie" type="text" [(ngModel)]="newPet.especie" #namePet placeholder="Perro / Gato"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12">
+            <ion-item>
+              <ion-input name="raza" type="text" [(ngModel)]="newPet.breed" placeholder="Raza"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col>
+              <ion-item>
+                <ion-label>Edad: </ion-label>
+                <ion-input name="edad" type="number" [(ngModel)]="newPet.age" placeholder="Años"></ion-input>
+              </ion-item>
+  
+              <ion-item>
+                <img alt="foto-mascota" [src]="newPet.photo">
+                <ion-button>
+                  <label for="file-upload">
+                    Subir Foto
+                    <ion-icon name="share-outline" color="blak" slot="end"></ion-icon>
+                  </label>
+                  <input (change)="newImageUpload($event)" id="file-upload" style="display: none;" type="file" accept="image/*"/>
+                </ion-button>
+                
+                
+              </ion-item>
+
+              
+              <ion-item>
+                <ion-buttons slot="end">
+                  <ion-button color="danger" (click)="nuevo()">
+                    Cancelar
+                  </ion-button>
+                  <ion-button color="success" (click)="guardarMascota()">
+                    Guardar
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
+
+              <ion-item>
+                <ion-button slot="end" color="danger" (click)="enableNewPet = false">
+                  Cerrar
+                  <ion-icon name="close"></ion-icon>
+                </ion-button>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+     
+
+      <ion-row>
+        <ion-col>
+          <h2>Mascotas</h2>
+          <ion-list *ngFor="let pet of pets">
+            <ion-item button="true" (click)="enable()">
+              <ion-avatar slot="start">
+                <img alt="foto-mascota" [src]="pet.photo" />
+              </ion-avatar>
+              <ion-item>
+                <ion-label>{{pet.namePet}}</ion-label>
+              </ion-item>
+              <ion-icon name="add-outline" slot="end" color="primary"></ion-icon>
+            </ion-item>
+          <div *ngIf="enableInfoPet">
+            <ion-item>
+                <img [src]="pet.photo" height="170px" width="150px">
+            </ion-item>
+            <ion-item>
+              <ion-label>Edad: {{pet.age}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Especie: {{pet.especie}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Raza: {{pet.breed}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-buttons slot="end">
+                
+                <ion-button (click)="newPet = pet" slot="end">
+                  <ion-icon name="create" color="blak"></ion-icon>
+                </ion-button>
+                <ion-button (click)="deleteMascota(pet)">
+                  <ion-icon slot="end" color="danger" name="trash-bin"></ion-icon>
+                </ion-button>
+                <ion-button color="danger" (click)="enableInfoPet = false" slot="start">
+                  Cerrar
+                  <ion-icon name="close" color="danger"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+          </div>
+            
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+
+  
+  
+</ion-content>

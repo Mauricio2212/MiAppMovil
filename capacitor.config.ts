@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'vetfarrera-app',
+  appId: 'com.vetfarrera.vetfarreraapp',
+  appName: 'VetFarreraApp',
   webDir: 'www',
   bundledWebRuntime: false
 };

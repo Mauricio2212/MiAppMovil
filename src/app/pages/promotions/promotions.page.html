@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-row id="row-encabezado" color="#01366aff">
+      <ion-col  id="col-encabezado" color="#01366aff">
+        <ion-list id="list-encabezado" color="#01366aff">
+          <ion-item id="item-encabezado" color="#01366aff">
+            <a href="home"><ion-icon id="flecha-regreso" name="arrow-back-outline"></ion-icon></a>
+            <ion-title>Promociones</ion-title>
+            <ion-icon id="ayuda" name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-item button="true" detail="true" (click)="nuevo()">
+          <ion-label>Agregar Promoción</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <hr>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="enableNewPromo">
+      <ion-row>
+        <ion-col>
+          <h2>Ingresa los datos</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row id="namePromo" class="ion-justify-content-end">
+        <ion-col size="12">
+          <ion-item>
+            <ion-input name="namePromo" type="text" [(ngModel)]="newPromo.namePromo" placeholder="Promoción"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="sucursal" type="text" [(ngModel)]="newPromo.sucursal" placeholder="Sucursal"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="vigencia" type="text" [(ngModel)]="newPromo.vigencia" placeholder="Vigencia"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="descripcion" type="text" [(ngModel)]="newPromo.descripcion" placeholder="Descripcion"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="telefono" type="number" [(ngModel)]="newPromo.tel" placeholder="Telefono de sucursal"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <img alt="foto-promo" [src]="newPromo.photo">
+            <ion-button>
+              <label for="file-upload">
+                Subir Foto
+                <ion-icon name="share-outline" color="blak" slot="end"></ion-icon>
+              </label>
+              <input (change)="newImageUpload($event)" id="file-upload" style="display: none;" type="file" accept="image/*">
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-button (click)="savePromo()">
+              Guardar
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-button slot="end" color="danger" (click)="enableNewPromo= false">
+              Cerrar
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <h2>Promociones</h2>
+
+        <ion-list *ngFor="let promo of promos">
+          <ion-item button="true" (click)="enable()">
+            <ion-thumbnail slot="start">
+              <img alt="promo-photo" [src]="promo.photo" />
+            </ion-thumbnail>
+            <ion-label>
+              {{promo.namePromo}}
+            </ion-label>
+          </ion-item>
+          
+          <div *ngIf="enableInfoPromo">
+            
+            <ion-item>
+              <ion-label>
+                <ion-icon name="storefront" slot="start" color="black"></ion-icon>
+                 {{promo.sucursal}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon name="calendar-outline" slot="start" color="black"></ion-icon>
+                {{promo.vigencia}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <p>
+                {{promo.descripcion}}
+              </p>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon name="call" slot="start" color="black"></ion-icon>
+                {{promo.tel}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-buttons slot="end">
+                <ion-button (click)="newPromo = promo" slot="end" fill="outline" color="success">
+                  <ion-icon name="create" color="success"></ion-icon>
+                </ion-button>
+                <ion-button (click)="deletePromo(promo)">
+                  <ion-icon slot="end" color="danger" name="trash-bin"></ion-icon>
+                </ion-button>
+                <ion-button color="danger" (click)="enableInfoPromo = false" slot="start">
+                  Cerrar
+                  <ion-icon name="close" color="danger"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            
+            
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-content>

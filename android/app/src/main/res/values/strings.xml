@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VetFarreraApp</string>
+    <string name="title_activity_main">VetFarreraApp</string>
+    <string name="package_name">com.vetfarrera.vetfarreraapp</string>
+    <string name="custom_url_scheme">com.vetfarrera.vetfarreraapp</string>
+</resources>

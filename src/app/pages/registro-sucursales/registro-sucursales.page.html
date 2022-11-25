@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row >
+      <ion-col  id="col-encabezado" color="#6bad4a">
+        <ion-list id="list-encabezado" color="##6bad4a">
+          <ion-item id="item-encabezado" color="#6bad4a">
+            <a id="flecha-regreso" href="home"><ion-icon id="flecha-regreso" name="arrow-back-outline"></ion-icon></a>
+            <ion-title>Sucursales</ion-title>
+            <ion-icon id="icono-ayuda" name="help-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-item button="true" detail="true" (click)="nuevo()">
+          <ion-label>Agregar Promoción</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <hr>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="enableNewSucursal">
+      <ion-row>
+        <ion-col>
+          <h2>Ingresa los datos</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row id="namePromo" class="ion-justify-content-end">
+        <ion-col size="12">
+          <ion-item>
+            <ion-input name="sucursal" type="text" [(ngModel)]="newSucursal.sucursal" placeholder="Sucursal"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="calle" type="text" [(ngModel)]="newSucursal.calle" placeholder="Calle"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="numero" type="number" [(ngModel)]="newSucursal.numero" placeholder="Numero"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="colonia" type="text" [(ngModel)]="newSucursal.colonia" placeholder="Colonia"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="estado" type="text" [(ngModel)]="newSucursal.estado" placeholder="Estado"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input name="telefono" type="number" [(ngModel)]="newSucursal.tel" placeholder="Telefono de sucursal"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <img alt="foto-promo" [src]="newSucursal.photo">
+            <ion-button>
+              <label for="file-upload">
+                Subir Foto
+                <ion-icon name="share-outline" color="blak" slot="end"></ion-icon>
+              </label>
+              <input (change)="newImageUpload($event)" id="file-upload" style="display: none;" type="file" accept="image/*">
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-buttons slot="end">
+              <ion-button (click)="nuevo()" color="danger">
+                Cancelar
+              </ion-button>
+              <ion-button (click)="saveSucursal()" color="success">
+                Guardar
+              </ion-button>
+            </ion-buttons>
+           
+          </ion-item>
+
+          <ion-item>
+            <ion-button slot="end" color="danger" (click)="enableNewSucursal= false">
+              Cerrar
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <h2>Promociones</h2>
+
+        <ion-list *ngFor="let sucursal of sucursales">
+          <ion-item button="true" (click)="enable()">
+            <ion-thumbnail slot="start">
+              <img alt="promo-photo" [src]="sucursal.photo" />
+            </ion-thumbnail>
+            <ion-label>
+              {{sucursal.sucursal}}
+            </ion-label>
+          </ion-item>
+          
+          <div *ngIf="enableInfoSucursal">
+            
+            <ion-item>
+              <ion-icon name="location-sharp" slot="start" color="black"></ion-icon>
+              <p>
+                
+                {{sucursal.calle}} {{sucursal.numero}} {{sucursal.colonia}} {{sucursal.estado}}
+              </p>
+                
+            </ion-item>
+            <ion-item>
+              <ion-icon name="call" slot="start" color="black"></ion-icon>
+              <ion-label>
+                
+                {{sucursal.tel}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-buttons slot="end">
+                <ion-button (click)="newSucursal = sucursal" slot="end" fill="outline" color="success">
+                  <ion-icon name="create" color="success"></ion-icon>
+                </ion-button>
+                <ion-button (click)="deletePromo(sucursal)">
+                  <ion-icon slot="end" color="danger" name="trash-bin"></ion-icon>
+                </ion-button>
+                <ion-button color="danger" (click)="enableInfoSucursal = false" slot="start">
+                  Cerrar
+                  <ion-icon name="close" color="danger"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            
+            
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-content>

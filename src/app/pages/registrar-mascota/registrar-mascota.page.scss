@@ -1,0 +1,18 @@
+//Encabezado
+#col-encabezado, #list-encabezado, #item-encabezado{
+    background-color: #01366aff;
+}
+
+a, ion-icon, ion-title{
+    color: white;
+}
+
+ion-input   {
+    border-style: solid;
+    border: 1px;
+    border-color: black;
+}
+//Boton nuevo
+#btn-nuevo{
+    padding-left: 130px;
+}
