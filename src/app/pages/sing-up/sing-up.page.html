@@ -3,33 +3,33 @@
     <ion-grid fixed>
       <ion-row id="titulo" class="ion-justify-content-center">
         <ion-col size="10">
-          <h1>¡Registrate y disgruta de
+          <h1>¡Registrate y disfruta de
             <br>nuestros servicios!</h1>
         </ion-col>
       </ion-row>
     
       <ion-row id="name" class="ion-justify-content-center">
         <ion-col size="9">
-          <ion-input name="name" type="text" #displayName required placeholder="Nombre"></ion-input>
+          <ion-input name="name" type="text" [(ngModel)]="newUser.name" required placeholder="Nombre"></ion-input>
         </ion-col>
       </ion-row>
     
       <ion-row id="email" class="ion-justify-content-center">
         <ion-col size="9">
-          <ion-input name="email" type="email" #email required placeholder="Correo"></ion-input>
+          <ion-input name="email" type="email" [(ngModel)]="newUser.email" required placeholder="Correo"></ion-input>
         </ion-col>
       </ion-row>
     
       <ion-row id="password" class="ion-justify-content-center">
         <ion-col size="9">
-          <ion-input name="password" type="password" #password required placeholder="Contraseña"></ion-input>
+          <ion-input name="password" type="password" [(ngModel)]="newUser.password" required placeholder="Contraseña"></ion-input>
         </ion-col>
       </ion-row>
 <!--(click)="registrarse()"-->
       <ion-row class="ion-justify-content-center">
         <ion-col size="9">
           <ion-button id="Crear-cuenta" color="#01366aff" 
-           type="submit" (click)="registerAdmin(email, password)"
+           type="submit" (click)="onRegister()"
           expand="block">
             Crear Cuenta
           </ion-button>
@@ -48,26 +48,6 @@
         </ion-col>
       </ion-row>
 <!--(click)="onLoginGoogle(email, password)"-->
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="11">
-          <ion-list id="contenedor-botones">
-            <ion-item id="items">
-              <ion-button id="boton-google" color="#ffff "
-              type="submit" (click)="onLoginGoogle(email, password)"
-              expand="block">Registrate con Google  
-                <img id="icono-google" src="../../../assets/images/GoogleLogo.png" width="30" height="30"></ion-button>
-            </ion-item>
-  
-            <ion-item>
-              <ion-button id="boton-facebook" color="#ffff"
-              type="submit" (click)="onLoginGoogle(email, password)">Registrate con Facebook
-                <img id="icono-facebook" src="../../../assets/images/LogoFaceBook.png" width="30" height="30">
-              </ion-button>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-
     </ion-grid>
   </form>
 </ion-content>

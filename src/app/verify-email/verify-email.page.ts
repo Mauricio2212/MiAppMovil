@@ -9,13 +9,15 @@ import { User } from './../shared/user.interface';
   styleUrls: ['./verify-email.page.scss'],
 })
 export class VerifyEmailPage implements OnInit {
-
+  ngOnInit() {}
+  constructor(private authSvc:AuthService) { }
+/*
   user$:Observable<User> = this.authSvc.afAuth.user;
 
 
-  constructor(private authSvc:AuthService) { }
+ 
 
-  ngOnInit() {}
+  
 
   //Método para reenviar un correo de confirmación
   async onSendEmail(): Promise<void> {
@@ -31,5 +33,5 @@ export class VerifyEmailPage implements OnInit {
     //Add 'implements OnDestroy' to the class.
     this.authSvc.logout();
   }
-
+*/
 }

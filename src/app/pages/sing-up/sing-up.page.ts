@@ -12,22 +12,18 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./sing-up.page.scss'],
 })
 export class SingUpPage implements OnInit {
-/*
-  user: User = {
+
+  newUser: User = {
     uid: '',
     name: '',
     email: '',
     photo: '',
-    displayName: '',
     emailVerified: false,
     password: ''
-  }
+  };
 
   newFile: any;
-  loading: any;
 
-  uid = '';
-*/
   constructor(public authSvc:AuthService, 
               private router:Router,
               public frStore:FirestoreService,
@@ -48,55 +44,44 @@ export class SingUpPage implements OnInit {
               
 */
   async ngOnInit() {
-   
+   const uid = await this.authSvc.getUid();
+   console.log(uid);
     
   }
 
- 
-
-  async onRegister(email, password) {
+  async onRegister() {
     try {
-      const user = await this.authSvc.register(email.value, password.value);
-      if(user){
-        console.log('User-->', user);
-        const isVerified = this.authSvc.isEmailVerified(user);
-        this.redirectUser(isVerified);
-      }
-    } catch (error) {
-      console.log('Error-->', error);
-    }
-  }
-  
-  async registerAdmin(email, password) {
-    try {
-      const admin = await this.admSvc.registerAdmin(email.value, password.value);
-      if(admin){
-        console.log('Admin-->', admin);
-        const isVerified = this.authSvc.isEmailVerified(admin);
-        this.redirectAdmin(isVerified);
-      }
+      const credenciales = {
+        email: this.newUser.email,
+        password: this.newUser.password,
+      };
+      const res = await this.authSvc.registrar(credenciales.email, credenciales.password);
+      const uid = await this.authSvc.getUid();
+      this.newUser.uid = uid;
+      this.saveUser();
+      console.log(uid);
     } catch (error) {
       console.log('Error-->', error);
     }
   }
 
-  async onLoginGoogle(email, password){
-    try {
-      const user = await this.authSvc.loginGoogle();
-      if(user){
-        //To do: Verivicar si el usuario verificó su Email
-        const isVerified = this.authSvc.isEmailVerified(user);
-        console.log('User-->', user);
-        console.log('Verified-->', isVerified);
-        const uid = await this.authSvc.getUid();
-        console.log('uid-->',uid);
-        this.redirectUser(isVerified);
-      }
-    } catch (error) {
-      console.log('Error-->', error);
+  async saveUser(){
+    const path = 'users';
+    const name = this.newUser.name;
+    if (this.newFile !== undefined){
+      //Método para guardar imagen creado con capacitor (proximamemente)
     }
+    this.frStore.createDoc(this.newUser, path, this.newUser.uid).then(res => {
+      console.log('guardado con exito');
+    }).catch( error => {});
+
   }
 
+  salir() {
+    this.authSvc.logout();
+  }
+
+  /*
   private redirectUser(isVerified:boolean): void{
     if(isVerified){
       this.router.navigate(['tab1']);
@@ -104,87 +89,5 @@ export class SingUpPage implements OnInit {
       this.router.navigate(['verify-email']);
     }
   }
-
-  private redirectAdmin(isVerified:boolean): void{
-    if(isVerified){
-      this.router.navigate(['home']);
-    }else{
-      this.router.navigate(['verify-email']);
-    }
-  }
-  
+*/
 }
-/*
-initUser(){
-  this.uid = '';
-  this.user = {
-    uid: '',
-    name: '',
-    email: '',
-    photo: '',
-    displayName: '',
-    emailVerified: false,
-    password: ''
-  };
-  console.log(this.user);
-}
-
-  async registrarse(){
-    const credenciales = {
-      email: this.user.email,
-      password: this.user.password
-    };
-    const res = await this.authSvc.registrar(credenciales.email, credenciales.password).catch(error => {
-      console.log('error-->', error);
-    });
-    
-    const uid = await this.authSvc.getUid();
-    this.user.uid = uid;
-    this.guardarUser();
-    console.log(uid);
-    this.router.navigate(['/login']);
-  }
-
-  async guardarUser(){
-    const path = 'users';
-    const name = this.user.name;
-    if(this.newFile != undefined){
-      const res = await this.frStorage.uploadImage(this.newFile, path, name);
-      this.user.photo = res;
-    }
-    this.frStore.createDoc(this.user, path, this.user.uid).then(res => {
-      //this.loading.dismiss();
-      console.log('guardado con exito');
-    }).catch(error => {
-      console.log('error-->', error);
-    });
-  }
-
-  async  ingresar(){
-    const credenciales = {
-      email: this.user.email,
-      password: this.user.password
-    };
-    this.authSvc.login(credenciales.email, credenciales.password).then(res => {
-      console.log('Ingreso exitoso');
-      this.router.navigate(['/tab1']);
-    });
-  }
-
-
-  async salir(){
-    this.authSvc.logout();
-    /*
-    const uid = await this.authSvc.getUid();
-    console.log(uid);
-    */
-   /*
-  }
-
-  getUserInfo(uid: string){
-    const path = 'users';
-    this.frStore.getDoc<User>(path, uid).subscribe(res => {
-      this.user = res;
-    });
-  }*/
-

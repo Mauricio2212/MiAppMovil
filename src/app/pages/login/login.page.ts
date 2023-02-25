@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
   async onLogin(email, password){
-    try {
+    /*try {
       const user = await this.authSvc.login(email.value, password.value);
       const admin = await this.admSvc.loginAdmin(email.value, password.value);
       //To do: Verificar si el usuario verificó su Email
@@ -91,6 +91,7 @@ export class LoginPage implements OnInit {
     }else{
       //Enviar a página de verificación
       this.router.navigate(['home']);
-    } 
+    } */
   }
-}
+ }
+

@@ -28,8 +28,12 @@ public data;
               private frStore:FirestoreService,
               private router: Router,
               public toastController: ToastController,
-              public loadingController: LoadingController) { 
-
+              public loadingController: LoadingController) {}
+              ngOnInit() {
+                //this.getUsers();
+              }
+                
+/*
                 this.authSvc.satateAuth().subscribe(res => {
                   console.log('User-->', res);
                   this.getUser(res);
@@ -44,26 +48,7 @@ public data;
                 });
               }
 
-  ngOnInit() {
-    this.getUsers();
-    
-  }
-
-/*
-//Método para subir imagenes
-async newImageUpload(event:any){
-  if(event.target.files && event.target.files[0]){
-    this.newFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = ((image) => {
-      this.user.photo = image.target.result as string;
-    });
-    reader.readAsDataURL(event.target.files[0]);
-  }
-}
-
-
-*/
+  
   
 getUsers(){
   this.frStore.getCollection<User>(this.path).subscribe(res => {
@@ -122,5 +107,5 @@ getUser(user){
     await this.loading.present();
 
   }
-
+*/
 }

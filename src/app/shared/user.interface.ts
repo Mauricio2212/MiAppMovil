@@ -2,11 +2,11 @@
 
 export interface User {
     uid: string;
+    name: string;
     email: string;
-    //photo: string;
-    displayName: string;
+    photo: string;
     emailVerified: boolean;
-    //password: string;
+    password: string;
 }
 
 export interface Admin {

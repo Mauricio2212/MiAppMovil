@@ -17,4 +17,7 @@ import { SingUpPage } from './sing-up.page';
   ],
   declarations: [SingUpPage]
 })
-export class SingUpPageModule {}
+export class SingUpPageModule{
+
+
+}

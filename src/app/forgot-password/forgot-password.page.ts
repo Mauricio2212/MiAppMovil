@@ -14,7 +14,7 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-  async onResetPassword(email){
+  /*async onResetPassword(email){
     console.log('Email-->', email);
     try {
       await this.authSvc.resetPassword(email.value);
@@ -23,5 +23,5 @@ export class ForgotPasswordPage implements OnInit {
       console.log('Error-->', error);
     }
   }
- 
+ */
 }

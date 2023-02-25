@@ -73,7 +73,7 @@ export class UsuariosPage implements OnInit {
       this.router.navigate(['verify-email']);
     }
   }
-
+/*
   async googleAdmin(email, password){
     try {
       const admin = await this.authSvc.adminloginGoogle();
@@ -90,7 +90,7 @@ export class UsuariosPage implements OnInit {
       console.log('Error-->', error);
     }
   }
-
+*/
   async guardarAdmin(){
     this.presentLoading();
     const path1 = 'Admins';
