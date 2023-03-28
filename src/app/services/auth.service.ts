@@ -14,9 +14,27 @@ import { GoogleAuthProvider } from '@angular/fire/auth/public_api';
   providedIn: 'root'
 })
 export class AuthService {
+
+  newFile: any;
+
+  //Propiedad
+  public user$: Observable<User>;
+
   constructor(public afAuth:AngularFireAuth, 
               private afStore:AngularFirestore
-              ) {}
+              ) {
+
+                this.user$ = this.afAuth.authState.pipe(
+                  switchMap((user) => {
+                    if(user){  //<-- Si tenemos un usuario logeado 
+                      return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
+                    }else{    //<-- Si no
+                      return of(null);  //retornamos un null en tipo Observable
+                    }
+                  })
+                );
+
+              }
 
 
 //Método de registro de usuarios
@@ -43,7 +61,7 @@ async getUid(){
     return user.uid;
   }
 }
-/*
+
   //Método de Verificación de Correo
 async sendVerificationEmail(): Promise<void>{
   try {
@@ -51,10 +69,12 @@ async sendVerificationEmail(): Promise<void>{
   } catch (error) {
     console.log('Error-->', error)
   }
+}
   //Método para comprobar que el Email esté verificado
   isEmailVerified(user: User){
     return user.emailVerified === true ? true : false;
   }
+
   //Método para resetear la contraseña
   async resetPassword(email: string): Promise<void>{
     try {
@@ -63,6 +83,5 @@ async sendVerificationEmail(): Promise<void>{
       console.log('Error-->', error);
     }
   }
-  
-*/ 
+
 }

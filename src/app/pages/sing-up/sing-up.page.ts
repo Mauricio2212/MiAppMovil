@@ -54,11 +54,13 @@ export class SingUpPage implements OnInit {
       const credenciales = {
         email: this.newUser.email,
         password: this.newUser.password,
+        emailVerified: this.newUser.emailVerified
       };
       const res = await this.authSvc.registrar(credenciales.email, credenciales.password);
       const uid = await this.authSvc.getUid();
       this.newUser.uid = uid;
       this.saveUser();
+      this.redirectUser(credenciales.emailVerified);
       console.log(uid);
     } catch (error) {
       console.log('Error-->', error);
@@ -81,7 +83,7 @@ export class SingUpPage implements OnInit {
     this.authSvc.logout();
   }
 
-  /*
+  
   private redirectUser(isVerified:boolean): void{
     if(isVerified){
       this.router.navigate(['tab1']);
@@ -89,5 +91,5 @@ export class SingUpPage implements OnInit {
       this.router.navigate(['verify-email']);
     }
   }
-*/
+
 }
