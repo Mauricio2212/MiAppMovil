@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from './../shared/user.interface';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-verify-email',
@@ -10,7 +11,7 @@ import { User } from './../shared/user.interface';
 })
 export class VerifyEmailPage implements OnInit {
 
-  //user$: Observable<User> = this.authSvc.afAuth.user;
+  user$: Observable<User> = this.authSvc.user$;
   
 
   constructor(private authSvc:AuthService) { }
